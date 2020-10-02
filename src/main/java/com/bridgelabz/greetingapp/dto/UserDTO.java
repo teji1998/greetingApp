@@ -9,5 +9,5 @@ import lombok.Setter;
 public class UserDTO {
 
     public String firstName;
-    public String lastname;
+    public String lastName;
 }
