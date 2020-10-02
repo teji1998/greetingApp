@@ -21,6 +21,11 @@ dependencies {
     }
 }
 
+dependencies {
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
+}
+
 test {
     useJUnitPlatform()
 }
