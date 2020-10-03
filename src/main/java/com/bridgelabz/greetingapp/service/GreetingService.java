@@ -29,7 +29,7 @@ public class GreetingService {
         return "Hello World!";
     }
 
-    /*public GreetingMessage findById(Long id) {
-        return greetingRepository.findById.get();
-    }*/
+    public GreetingMessage findById(Long id) {
+        return greetingRepository.findById(id).get();
+    }
 }

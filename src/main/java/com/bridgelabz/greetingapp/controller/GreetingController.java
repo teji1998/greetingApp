@@ -20,4 +20,10 @@ public class GreetingController {
         GreetingMessage message = greetingService.createMessage(userDTO);
         return new ResponseEntity(message.getGreetingMessage(), HttpStatus.OK);
     }
+
+    @GetMapping()
+    public ResponseEntity getMessageById(@RequestParam Long id) {
+        GreetingMessage greetingMessage = greetingService.findById(id);
+        return new ResponseEntity(greetingMessage, HttpStatus.OK);
+    }
 }
