@@ -42,5 +42,11 @@ public class GreetingController {
         return new ResponseEntity(greetingMessage, HttpStatus.OK);
     }
 
+    @DeleteMapping
+    public ResponseEntity deleteMessage(Long id) {
+        String greetingMessage = greetingService.deleteMessage(id);
+        return new ResponseEntity(greetingMessage, HttpStatus.OK);
+    }
+
 }
 

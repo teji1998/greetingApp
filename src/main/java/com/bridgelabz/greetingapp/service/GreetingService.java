@@ -45,4 +45,9 @@ public class GreetingService {
         greetingMessage.setGreetingMessage(getMessage(userDTO));
         return greetingRepository.save(greetingMessage);
     }
+
+    public String deleteMessage(Long id) {
+        greetingRepository.delete(greetingRepository.findById(id).get());
+        return "Deleted message";
+    }
 }
