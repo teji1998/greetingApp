@@ -2,12 +2,12 @@ package com.bridgelabz.greetingapp.service;
 
 import com.bridgelabz.greetingapp.dto.GreetingMessageDTO;
 import com.bridgelabz.greetingapp.dto.UserDTO;
+import com.bridgelabz.greetingapp.exception.GreetingMessageException;
 import com.bridgelabz.greetingapp.model.GreetingMessage;
 import com.bridgelabz.greetingapp.repository.IGreetingRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -19,7 +19,7 @@ public class GreetingService {
     @Autowired
     ModelMapper modelMapper;
 
-
+    
     public GreetingMessage createMessage(UserDTO userDTO) {
         GreetingMessage greetingMessage = new GreetingMessage();
         greetingMessage.setGreetingMessage(getMessage(userDTO));
@@ -38,7 +38,7 @@ public class GreetingService {
     }
 
     public GreetingMessage findById(Long id) {
-        return greetingRepository.findById(id).get();
+        return greetingRepository.findById(id).orElseThrow(() -> new GreetingMessageException("Record not found")) ;
     }
 
     public List<GreetingMessage> findMessages() {
