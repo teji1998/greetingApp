@@ -39,4 +39,10 @@ public class GreetingService {
     public List<GreetingMessage> findMessages() {
         return greetingRepository.findAll();
     }
+
+    public GreetingMessage updateMessage(Long id, UserDTO userDTO) {
+        GreetingMessage greetingMessage = findById(id);
+        greetingMessage.setGreetingMessage(getMessage(userDTO));
+        return greetingRepository.save(greetingMessage);
+    }
 }

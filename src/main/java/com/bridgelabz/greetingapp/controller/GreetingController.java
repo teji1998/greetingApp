@@ -35,5 +35,12 @@ public class GreetingController {
         List<GreetingMessage> greetingMessageList = greetingService.findMessages();
         return new ResponseEntity<>(greetingMessageList, HttpStatus.OK);
     }
+
+    @PutMapping
+    public ResponseEntity updatingMessageUsingId(@RequestParam Long id, @RequestBody UserDTO userDTO) {
+        GreetingMessage greetingMessage = greetingService.updateMessage(id, userDTO);
+        return new ResponseEntity(greetingMessage, HttpStatus.OK);
+    }
+
 }
 

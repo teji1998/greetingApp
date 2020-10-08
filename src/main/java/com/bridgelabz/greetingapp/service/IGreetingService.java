@@ -7,8 +7,9 @@ import java.util.List;
 
 public interface IGreetingService {
 
-    GreetingMessage getMessage(UserDTO userDTO);
-    GreetingMessage findById(Long id);
+    public GreetingMessage getMessage(UserDTO userDTO);
+    public GreetingMessage findById(Long id);
     public List<GreetingMessage> findMessages();
+    public GreetingMessage updateMessage(Long id, UserDTO userDTO);
 
 }
