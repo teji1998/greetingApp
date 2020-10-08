@@ -10,6 +10,4 @@ public interface IGreetingService {
     public GreetingMessage getMessage(UserDTO userDTO);
     public GreetingMessage findById(Long id);
     public List<GreetingMessage> findMessages();
-    public GreetingMessage updateMessage(Long id, UserDTO userDTO);
-
 }

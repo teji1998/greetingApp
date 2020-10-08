@@ -1,8 +1,10 @@
 package com.bridgelabz.greetingapp.service;
 
+import com.bridgelabz.greetingapp.dto.GreetingMessageDTO;
 import com.bridgelabz.greetingapp.dto.UserDTO;
 import com.bridgelabz.greetingapp.model.GreetingMessage;
 import com.bridgelabz.greetingapp.repository.IGreetingRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,9 @@ public class GreetingService {
 
     @Autowired
     IGreetingRepository greetingRepository;
+
+    @Autowired
+    ModelMapper modelMapper;
 
 
     public GreetingMessage createMessage(UserDTO userDTO) {
@@ -40,10 +45,10 @@ public class GreetingService {
         return greetingRepository.findAll();
     }
 
-    public GreetingMessage updateMessage(Long id, UserDTO userDTO) {
-        GreetingMessage greetingMessage = findById(id);
-        greetingMessage.setGreetingMessage(getMessage(userDTO));
-        return greetingRepository.save(greetingMessage);
+    public GreetingMessage updateMessage(GreetingMessageDTO greetingMessageDTO) {
+       findById(greetingMessageDTO.getGreetingId());
+       GreetingMessage greetingMessage = modelMapper.map(greetingMessageDTO, GreetingMessage.class);
+       return greetingRepository.save(greetingMessage);
     }
 
     public String deleteMessage(Long id) {

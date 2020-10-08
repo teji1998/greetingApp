@@ -1,5 +1,6 @@
 package com.bridgelabz.greetingapp.controller;
 
+import com.bridgelabz.greetingapp.dto.GreetingMessageDTO;
 import com.bridgelabz.greetingapp.dto.UserDTO;
 import com.bridgelabz.greetingapp.model.GreetingMessage;
 import com.bridgelabz.greetingapp.service.GreetingService;
@@ -37,8 +38,8 @@ public class GreetingController {
     }
 
     @PutMapping
-    public ResponseEntity updatingMessageUsingId(@RequestParam Long id, @RequestBody UserDTO userDTO) {
-        GreetingMessage greetingMessage = greetingService.updateMessage(id, userDTO);
+    public ResponseEntity updatingMessageUsingId(@RequestParam GreetingMessageDTO greetingMessageDTO) {
+        GreetingMessage greetingMessage = greetingService.updateMessage(greetingMessageDTO);
         return new ResponseEntity(greetingMessage, HttpStatus.OK);
     }
 
@@ -47,6 +48,5 @@ public class GreetingController {
         String greetingMessage = greetingService.deleteMessage(id);
         return new ResponseEntity(greetingMessage, HttpStatus.OK);
     }
-
 }
 
