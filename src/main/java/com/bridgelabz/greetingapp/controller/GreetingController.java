@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/hello")
 public class GreetingController {
@@ -15,15 +17,23 @@ public class GreetingController {
     @Autowired
     GreetingService greetingService;
 
+
     @PostMapping()
     public ResponseEntity getMessage(@RequestBody UserDTO userDTO) {
         GreetingMessage message = greetingService.createMessage(userDTO);
         return new ResponseEntity(message.getGreetingMessage(), HttpStatus.OK);
     }
 
-    @GetMapping()
+    @GetMapping("/id")
     public ResponseEntity getMessageById(@RequestParam Long id) {
         GreetingMessage greetingMessage = greetingService.findById(id);
         return new ResponseEntity(greetingMessage, HttpStatus.OK);
     }
+
+    @GetMapping("/all")
+    public ResponseEntity<List> getAllMessage() {
+        List<GreetingMessage> greetingMessageList = greetingService.findMessages();
+        return new ResponseEntity<>(greetingMessageList, HttpStatus.OK);
+    }
 }
+

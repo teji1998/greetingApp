@@ -6,11 +6,14 @@ import com.bridgelabz.greetingapp.repository.IGreetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GreetingService {
 
     @Autowired
     IGreetingRepository greetingRepository;
+
 
     public GreetingMessage createMessage(UserDTO userDTO) {
         GreetingMessage greetingMessage = new GreetingMessage();
@@ -31,5 +34,9 @@ public class GreetingService {
 
     public GreetingMessage findById(Long id) {
         return greetingRepository.findById(id).get();
+    }
+
+    public List<GreetingMessage> findMessages() {
+        return greetingRepository.findAll();
     }
 }
