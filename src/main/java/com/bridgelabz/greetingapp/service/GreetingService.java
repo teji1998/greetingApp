@@ -19,7 +19,6 @@ public class GreetingService {
     @Autowired
     ModelMapper modelMapper;
 
-    
     public GreetingMessage createMessage(UserDTO userDTO) {
         GreetingMessage greetingMessage = new GreetingMessage();
         greetingMessage.setGreetingMessage(getMessage(userDTO));
