@@ -7,5 +7,7 @@ import lombok.Setter;
 @Setter
 public class GreetingMessageDTO {
     private Long greetingId;
-    private String greetingMessage;
+    private String message;
+    private String firstName;
+    private String lastName;
 }
